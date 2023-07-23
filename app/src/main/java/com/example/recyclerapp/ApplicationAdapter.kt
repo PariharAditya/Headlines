@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class ApplicationAdapter(private val listener: NewsItem): RecyclerView.Adapter<ApplicationViewHolder>()
 {
@@ -37,6 +38,8 @@ class ApplicationAdapter(private val listener: NewsItem): RecyclerView.Adapter<A
     {
         val item = items[position]
         holder.textView.text = item.title
+        holder.author.text = item.author
+        Glide.with(holder.itemView.context).load(item.imageUrl).into(holder.image)
     }
 
     override fun getItemCount(): Int
